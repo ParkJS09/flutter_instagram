@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Feed extends StatefulWidget {
-  const Feed({
-    Key? key,
-  }) : super(key: key);
+  const Feed({Key? key, required this.imageUrl}) : super(key: key);
+
+  final String imageUrl;
 
   @override
   State<Feed> createState() => _FeedState();
@@ -19,7 +19,7 @@ class _FeedState extends State<Feed> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image.network(
-          "https://cdn2.thecatapi.com/images/kat_7kqBi.png",
+          widget.imageUrl,
           height: 400,
           width: double.infinity,
           fit: BoxFit.cover,
