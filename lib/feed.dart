@@ -20,6 +20,18 @@ class _FeedState extends State<Feed> {
       children: [
         Image.network(
           widget.imageUrl,
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) {
+              return child;
+            }
+            return Center(
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null ?
+                loadingProgress.cumulativeBytesLoaded /
+                    loadingProgress.expectedTotalBytes! : null,
+              ),
+            );
+          },
           height: 400,
           width: double.infinity,
           fit: BoxFit.cover,
